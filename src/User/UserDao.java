@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class UserDao {
+public class UserDao{
     final static String DB_FILE = "users.csv";
     static HashMap<String, String> users = new HashMap<>();
 
@@ -93,8 +93,8 @@ public class UserDao {
     }
 
     public static void main(String[] args) {
-        register("zwh", "123345");
+        register("zwh", "123");
         login("zwh", "123");
-
+        login("zwh", "1234");
     }
 }

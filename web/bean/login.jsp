@@ -21,7 +21,7 @@ password=<%=request.getParameter("password")%>
     String password = request.getParameter("password");
     //if(username.equals("admin")&&password.equals("123456"))
     //if("admin".equals(username)&&"123456".equals(password))
-    if (User.UserDao.login(username, password)) {
+    if (UserDao.login(username, password)) {
         out.println("welcome " + username);
         session.setAttribute("name", username);//创建session 并向表中增加一行name(如果已经存在就会覆盖)
 

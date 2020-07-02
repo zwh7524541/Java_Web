@@ -1,4 +1,4 @@
-<%@ page import="javax.jws.soap.SOAPBinding" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/5/28 0028
@@ -16,7 +16,7 @@
     String name = request.getParameter("username");
     String pass1 = request.getParameter("password1");
     String pass2 = request.getParameter("password2");
-    if (pass1.equals(pass2) && User.UserDao.register(name, pass1)) {
+    if (pass1.equals(pass2) && UserDao.register(name, pass1)) {
         out.println("注册成功！！");
         out.println("<a href='login.html'>请登录</a>");
 
