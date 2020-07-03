@@ -4,58 +4,68 @@
 <!-- 通过动作标识，获取ShopCar类实例 -->
 <jsp:useBean id="myCar" class="bean.shopping.toolbean.ShopCar" scope="session"/>
 <%
-    ArrayList buylist = myCar.getBuylist();        //获取实例中用来存储购买的商品的集合
-    float total = 0;                                //用来存储应付金额
+    ArrayList buyList = myCar.getBuys();
+    float total = 0;
 %>
-
-<table border="1" width="450" rules="none" cellspacing="0" cellpadding="0">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link href="css/styles.css" type="text/css" rel="stylesheet" />
+    <title>购物车</title>
+</head>
+<body>
+<table>
     <tr height="50">
-        <td colspan="5" align="center">购买的商品如下</td>
+        <td colspan="3" align="center" ><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物车</h1></td>
     </tr>
     <tr align="center" height="30" bgcolor="lightgrey">
-        <td width="25%">名称</td>
-        <td>价格(元/斤)</td>
+        <td>名称</td>
+        <td>价格</td>
         <td>数量</td>
-        <td>总价(元)</td>
-        <td>移除(-1/次)</td>
+        <td>清除</td>
     </tr>
-    <% if (buylist == null || buylist.size() == 0) { %>
+    <% if(buyList == null || buyList.size() == 0){ %>
     <tr height="100">
-        <td colspan="5" align="center">您的购物车为空！</td>
+        <td colspan="3" align="center">没有商品可以显示！</td>
     </tr>
     <%
-    } else {
-        for (int i = 0; i < buylist.size(); i++) {
-            GoodsSingle single = (GoodsSingle) buylist.get(i);
-            String name = single.getName();                            //获取商品名称
-            float price = single.getPrice();                            //获取商品价格
-            int num = single.getNum();                                //获取购买数量
-            float money = ((int) ((price * num + 0.05f) * 10)) / 10f;            //计算当前商品总价，并进行四舍五入
-            total += money;                                            //计算应付金额
+    }else{
+        for(int i = 0; i < buyList.size(); i++){
+            GoodsSingle single = (GoodsSingle)buyList.get(i);
+            float money = single.getPrice() * single.getNum();
+            total += money;
     %>
     <tr align="center" height="50">
-        <td><%=name%>
-        </td>
-        <td><%=price%>
-        </td>
-        <td><%=num%>
-        </td>
-        <td><%=money%>
-        </td>
+        <td><%= single.getName() %></td>
+        <td><%= single.getPrice() %></td>
         <td>
-            <a href="docar.jsp?action=remove&name=<%=single.getName() %>">移除</a>
+            <a href="docar.jsp?action=reduce_cargoods&id=<%=i%>" >
+                <img src="img/reduce.png" width="20" height="20"/>
+            </a>
+            <strong><%=single.getNum()%></strong>
+            <a href="docar.jsp?action=add_cargoods&id=<%=i%>">
+                <img src="img/add.png" width="20" height="20"/>
+            </a>
         </td>
+        <td><a href="docar.jsp?action=clear_item&id=<%=i%>">移除</a></td>
     </tr>
     <%
             }
         }
     %>
-    <tr height="50" align="center">
-        <td colspan="5">应付金额：<%=total%>
-        </td>
+    <tr height="50">
+        <td colspan="3" align="left" ><h4>应付金额：<%= total %></h4></td>
+        <br>
+
     </tr>
-    <tr height="50" align="center">
-        <td colspan="2"><a href="show.jsp">继续购物</a></td>
-        <td colspan="3"><a href="docar.jsp?action=clear">清空购物车</a></td>
+    <tr align="center" height="50">
+        <td align="left" colspan="3"><a href="show.jsp">继续购物</td>
+        <td align="right" colspan="3"><a href="docar.jsp?action=clear">清空购物车</a></td>
     </tr>
+
+
+
 </table>
+</body>
+</html>

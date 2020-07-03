@@ -1,37 +1,81 @@
 <%@ page contentType="text/html;charset=gb2312" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.shopping.valuebean.GoodsSingle" %>
-<% ArrayList goodslist = (ArrayList) session.getAttribute("goodslist"); %>
-<table border="1" width="450" rules="none" cellspacing="0" cellpadding="0">
+<jsp:useBean id="myGoodsList" class="bean.shopping.valuebean.GoodsList" scope="session"/>
+<%
+    ArrayList goodsList = myGoodsList.getGoodList();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        table{
+            border: 1px;
+            width: 500px;
+            rules: none;
+            cellspacing:0px;
+            cellpadding:0px;
+        }
+        tr{
+            height:	50px;
+        }
+        td{
+            width:100px;
+        }
+        a:link {
+            text-decoration: none;
+        }
+        a:visited {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        a:active {
+            text-decoration: none;
+        }
+        </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>购物商城</title>
+</head>
+<body>
+<table>
     <tr height="50">
-        <td colspan="3" align="center">提供商品如下</td>
+        <td colspan="3" align="center" ><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物商城</h1></td>
     </tr>
     <tr align="center" height="30" bgcolor="lightgrey">
         <td>名称</td>
-        <td>价格(元/斤)</td>
+        <td>价格</td>
         <td>购买</td>
     </tr>
-    <% if (goodslist == null || goodslist.size() == 0) { %>
+    <% if(goodsList == null || goodsList.size() == 0){ %>
     <tr height="100">
-        <td colspan="3" align="center">没有商品可显示！</td>
+        <td colspan="3" align="center">没有商品可以显示！</td>
     </tr>
     <%
-    } else {
-        for (int i = 0; i < goodslist.size(); i++) {
-            GoodsSingle single = (GoodsSingle) goodslist.get(i);
+    }else{
+        for(int i = 0; i < goodsList.size(); i++){
+            GoodsSingle single = (GoodsSingle)goodsList.get(i);
     %>
-    <tr height="50" align="center">
-        <td><%=single.getName()%>
-        </td>
-        <td><%=single.getPrice()%>
-        </td>
-        <td><a href="docar.jsp?action=buy&id=<%=i%>">购买</a></td>
+    <tr align="center" height="50">
+
+        <td><%= single.getName() %></td>
+        <td><%= single.getPrice() %></td>
+        <td><a href="docar.jsp?action=buy&id=<%=i%>">加入购物车</a></td>
     </tr>
     <%
             }
         }
     %>
-    <tr height="50">
-        <td align="center" colspan="3"><a href="shopcar.jsp">查看购物车</a></td>
+    <tr align="center" height="50">
+        <td align="middle" colspan="3"><a href="shopcar.jsp">查看购物车</a></td>
     </tr>
+
+    <tr height="50">
+        <td align="center" colspan="5"><a href="/bean/login.html">注销登陆</a></td>
+    </tr>
+
+
 </table>
+</body>
+</html>

@@ -2,70 +2,73 @@ package bean.shopping.toolbean;
 
 import java.util.ArrayList;
 
+import bean.shopping.toolbean.MyTools;
 import bean.shopping.valuebean.GoodsSingle;
 
 public class ShopCar {
-    private ArrayList<GoodsSingle> buylist = new ArrayList<GoodsSingle>();            //�����洢�������Ʒ
-
-    public ArrayList<GoodsSingle> getBuylist() {
-        return buylist;
+    private ArrayList<GoodsSingle> buyList = new ArrayList<GoodsSingle>();
+    public ArrayList<GoodsSingle> getBuys(){
+        return this.buyList;
     }
-
-    /**
-     * @���� ���ﳵ�������Ʒ
-     * @���� singleΪGoodsSingle����󣬷�װ��Ҫ��ӵ���Ʒ��Ϣ
-     */
-    public void addItem(bean.shopping.valuebean.GoodsSingle single) {
-        if (single != null) {
-            if (buylist.size() == 0) {                        //���buylist�в������κ���Ʒ
-                bean.shopping.valuebean.GoodsSingle temp = new bean.shopping.valuebean.GoodsSingle();
-                temp.setName(single.getName());
-                temp.setPrice(single.getPrice());
-                temp.setNum(single.getNum());
-                buylist.add(temp);                        //�洢��Ʒ
-            } else {                                        //���buylist�д�����Ʒ
-                int i = 0;
-                for (; i < buylist.size(); i++) {                //����buylist���϶����жϸü������Ƿ��Ѿ����ڵ�ǰҪ��ӵ���Ʒ
-                    bean.shopping.valuebean.GoodsSingle temp = (GoodsSingle) buylist.get(i);        //��ȡbuylist�����е�ǰԪ��
-                    if (temp.getName().equals(single.getName())) {        //�жϴ�buylist�����л�ȡ�ĵ�ǰ��Ʒ������Ƿ���Ҫ��ӵ���Ʒ�������ͬ
-                        temp.setNum(temp.getNum() + 1);                    //����Ʒ����������1
-                        break;                                            //����forѭ��
+    public GoodsSingle findGood(int i) {
+        return buyList.get(i);
+    }
+    public void addItem(GoodsSingle g) {
+        if(buyList.size() == 0) {
+            buyList.add(g);
+        }else {
+            int i = 0;
+            for(; i < buyList.size(); i++) {
+                if(g.getName().equals(buyList.get(i).getName())) {
+                    buyList.get(i).setNum(buyList.get(i).getNum()+1);
+                    break;
+                }
+            }
+            if(i >= buyList.size()) {
+                buyList.add(g);
+            }
+        }
+    }
+    public void reduceItem(GoodsSingle g) {
+        if(buyList.size() == 0) {
+            System.out.println("no item to reduce!");
+        }else {
+            int i = 0;
+            for(; i < buyList.size(); i++) {
+                if(g.getName().equals(buyList.get(i).getName())) {
+                    if(buyList.get(i).getNum() > 1) {
+                        buyList.get(i).setNum(buyList.get(i).getNum()-1);
+                        break;
+                    }else if(buyList.get(i).getNum() == 1) {
+                        buyList.remove(buyList.get(i));
+                        break;
                     }
                 }
-                if (i >= buylist.size()) {                    //˵��buylist�в�����Ҫ��ӵ���Ʒ
-                    bean.shopping.valuebean.GoodsSingle temp = new GoodsSingle();
-                    temp.setName(single.getName());
-                    temp.setPrice(single.getPrice());
-                    temp.setNum(single.getNum());
-                    buylist.add(temp);                    //�洢��Ʒ
+            }
+        }
+    }
+    public void removeItem(GoodsSingle g) {
+        if(buyList.size() == 0) {
+            System.out.println("没有可以删除的选项！");
+        }else {
+            buyList.remove(g);
+        }
+    }
+    public void clearItem(String name) {
+        if(buyList.size() == 0) {
+        }else {
+            int i = 0;
+            for(; i < buyList.size(); i++) {
+                if(MyTools.toChinese(name).equals(buyList.get(i).getName())) {
+                    buyList.remove(i);
                 }
             }
         }
     }
-
-    /**
-     * @���� �ӹ��ﳵ���Ƴ�ָ����Ƶ���Ʒ
-     * @���� name��ʾ��Ʒ���
-     */
-    public void removeItem(String name) {
-        for (int i = 0; i < buylist.size(); i++) {                    //����buylist���ϣ�����ָ����Ƶ���Ʒ
-            bean.shopping.valuebean.GoodsSingle temp = (bean.shopping.valuebean.GoodsSingle) buylist.get(i);   //��ȡ�����е�ǰλ�õ���Ʒ
-            //�����Ʒ�����Ϊname����ָ�������
-            if (temp.getName().equals(MyTools.toChinese(name))) {
-                if (temp.getNum() > 1) {                        //�����Ʒ�Ĺ�����������1
-                    temp.setNum(temp.getNum() - 1);            //�򽫹���������1
-                    break;                                    //����forѭ��
-                } else if (temp.getNum() == 1) {                    //�����Ʒ�Ĺ�������Ϊ1
-                    buylist.remove(i);                        //��buylist���϶������Ƴ����Ʒ
-                }
-            }
-        }
-    }
-
-    /**
-     * @���� ��չ��ﳵ
-     */
     public void clearCar() {
-        buylist.clear();                                    //���buylist���϶���
+        buyList.clear();
     }
+
+
+
 }

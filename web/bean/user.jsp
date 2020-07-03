@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Lec22 Session</title>
+    <title>用户界面</title>
 </head>
 <body>
 当前登录用户<%=session.getAttribute("name")%>;
