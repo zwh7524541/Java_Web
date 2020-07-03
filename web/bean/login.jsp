@@ -25,7 +25,7 @@ password=<%=request.getParameter("password")%>
         out.println("welcome " + username);
         session.setAttribute("name", username);//创建session 并向表中增加一行name(如果已经存在就会覆盖)
 
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("user.jsp");
 
     } else {
         out.println("登陆失败");
