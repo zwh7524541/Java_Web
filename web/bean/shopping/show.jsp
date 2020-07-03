@@ -8,38 +8,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style type="text/css">
-        table{
-            border: 1px;
-            width: 500px;
-            rules: none;
-            cellspacing:0px;
-            cellpadding:0px;
-        }
-        tr{
-            height:	50px;
-        }
-        td{
-            width:100px;
-        }
-        a:link {
-            text-decoration: none;
-        }
-        a:visited {
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: none;
-        }
-        a:active {
-            text-decoration: none;
-        }
-        </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/styles.css" type="text/css" rel="stylesheet" />
     <title>购物商城</title>
 </head>
 <body>
-<table>
+<table align="center" valign="center">
     <tr height="50">
         <td colspan="3" align="center" ><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物商城</h1></td>
     </tr>

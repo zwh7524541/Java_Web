@@ -1,8 +1,5 @@
 package bean.shopping.toolbean;
-
 import java.util.ArrayList;
-
-import bean.shopping.toolbean.MyTools;
 import bean.shopping.valuebean.GoodsSingle;
 
 public class ShopCar {
@@ -54,17 +51,7 @@ public class ShopCar {
             buyList.remove(g);
         }
     }
-    public void clearItem(String name) {
-        if(buyList.size() == 0) {
-        }else {
-            int i = 0;
-            for(; i < buyList.size(); i++) {
-                if(MyTools.toChinese(name).equals(buyList.get(i).getName())) {
-                    buyList.remove(i);
-                }
-            }
-        }
-    }
+
     public void clearCar() {
         buyList.clear();
     }

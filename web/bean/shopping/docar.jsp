@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=gb2312" %>
 <%@ page import="bean.shopping.toolbean.MyTools" %>
 <%@ page import="bean.shopping.valuebean.GoodsSingle" %>
-<%@ page import="java.util.ArrayList" %>
 <jsp:useBean id="myCar" class="bean.shopping.toolbean.ShopCar" scope="session"/>
 <jsp:useBean id="myGoodsList" class="bean.shopping.valuebean.GoodsList" scope="session"/>
 <%

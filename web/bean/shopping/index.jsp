@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=gb2312" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.shopping.valuebean.GoodsSingle" %>
 <jsp:useBean id="myGoodsList" class="bean.shopping.valuebean.GoodsList" scope="session" />
 <%

@@ -10,12 +10,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <link href="css/styles.css" type="text/css" rel="stylesheet" />
     <title>购物车</title>
 </head>
 <body>
-<table>
+<table align="center" valign="center">
     <tr height="50">
         <td colspan="3" align="center" ><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物车</h1></td>
     </tr>
@@ -41,11 +42,11 @@
         <td><%= single.getPrice() %></td>
         <td>
             <a href="docar.jsp?action=reduce_cargoods&id=<%=i%>" >
-                <img src="img/reduce.png" width="20" height="20"/>
+                <img src="img/reduce.png" width="19" height="19"/>
             </a>
             <strong><%=single.getNum()%></strong>
             <a href="docar.jsp?action=add_cargoods&id=<%=i%>">
-                <img src="img/add.png" width="20" height="20"/>
+                <img src="img/add.png" width="19" height="19"/>
             </a>
         </td>
         <td><a href="docar.jsp?action=clear_item&id=<%=i%>">移除</a></td>

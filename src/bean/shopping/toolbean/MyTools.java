@@ -1,5 +1,4 @@
 package bean.shopping.toolbean;
-
 import java.io.UnsupportedEncodingException;
 
 public class MyTools {

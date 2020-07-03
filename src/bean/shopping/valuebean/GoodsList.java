@@ -1,5 +1,4 @@
 package bean.shopping.valuebean;
-
 import java.util.ArrayList;
 
 public class GoodsList {
