@@ -1,5 +1,4 @@
 package User;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,7 +14,7 @@ public class UserDao{
     static {
         try {
             Scanner cin = new Scanner(new File(DB_FILE));
-            cin.nextLine();//跳过表头
+            cin.nextLine();
             while (cin.hasNextLine()) {
                 String line = cin.nextLine();
                 if (line.trim().isEmpty()) continue;
@@ -29,7 +28,6 @@ public class UserDao{
         } catch (IOException e) {
             File file = new File(DB_FILE);
             try {
-                //file.createNewFile();
                 PrintWriter pw = new PrintWriter(file);
                 pw.println("name,password");
                 System.err.println(DB_FILE + " created!!!");
@@ -43,14 +41,13 @@ public class UserDao{
     }
 
     public static boolean register(String name, String pass) {
-        //FileOutputStream/ FileWriter/PrinterWriter/BufferedOutputStream/BufferedWriter append
         if (users.containsKey(name)) {
             System.err.println("用户名已经存在注册失败");
             return false;
         }
         try {
             PrintWriter pw = new PrintWriter(new FileWriter(new File(DB_FILE), true));
-            pw.println(name + "," + pass);//
+            pw.println(name + "," + pass);
             users.put(name, pass);
             System.err.println("注册成功!");
             pw.close();
@@ -87,14 +84,10 @@ public class UserDao{
         return false;
     }
 
-    private static boolean updatePassword(String name, String oldPass, String newPass) {
-        // TODO
-        return true;
-    }
 
-    public static void main(String[] args) {
-        register("zwh", "123");
-        login("zwh", "123");
-        login("zwh", "1234");
-    }
+//    public static void main(String[] args) {
+//        register("zwh", "123");
+//        login("zwh", "123");
+//        login("zwh", "1234");
+//    }
 }
