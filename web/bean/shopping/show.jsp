@@ -48,6 +48,7 @@
     <tr height="50">
         <td align="center" colspan="5"><a href="/bean/login.html">注销登陆</a></td>
     </tr>
+    <tr>当前登录用户<%=session.getAttribute("name")%>;</tr>
 
 
 </table>

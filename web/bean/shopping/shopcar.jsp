@@ -64,6 +64,7 @@
         <td align="left" colspan="3"><a href="show.jsp">继续购物</td>
         <td align="right" colspan="3"><a href="docar.jsp?action=clear">清空购物车</a></td>
     </tr>
+    <tr>当前登录用户<%=session.getAttribute("name")%>;</tr>
 
 
 
