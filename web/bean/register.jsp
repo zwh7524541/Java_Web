@@ -12,7 +12,6 @@
     if (pass1.equals(pass2) && UserDao.register(name, pass1)) {
         out.println("注册成功！！");
         out.println("<a href='login.html'>请登录</a>");
-
     } else {
         out.println("注册失败");
         out.println("<a href='register.html'>重新注册</a>");
