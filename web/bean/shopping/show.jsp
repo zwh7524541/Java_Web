@@ -19,7 +19,7 @@
     </tr>
     <tr align="center" height="30" bgcolor="lightgrey">
         <td>名称</td>
-        <td>价格</td>
+        <td>价格(元/本)</td>
         <td>购买</td>
     </tr>
     <% if(goodsList == null || goodsList.size() == 0){ %>
