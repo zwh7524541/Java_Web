@@ -9,6 +9,7 @@
     if (session.getAttribute("name") != null) {
         out.println("<a href='logout.jsp'>注销</a>");
         out.println("<a href='/bean/shopping/index.jsp'>开始购物</a>");
+
     } else {
         out.println("<a href='login.html'>请登录</a>");
     }
