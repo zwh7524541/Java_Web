@@ -12,10 +12,17 @@
     if (pass1.equals(pass2) && UserDao.register(name, pass1)) {
         out.println("注册成功！！");
         out.println("<a href='login.html'>请登录</a>");
-    } else {
-        out.println("注册失败");
+    }
+    else if(pass1.equals(pass2))
+    {
+        out.println("用户名存在！！");
+        out.println("<a href='register.html'>重新注册</a>");
+    }else if(UserDao.register(name, pass1))
+    {
+        out.println("两次密码相同！！");
         out.println("<a href='register.html'>重新注册</a>");
     }
+
 %>
 
 </body>
