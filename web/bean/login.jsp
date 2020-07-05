@@ -19,8 +19,8 @@ password=<%=request.getParameter("password")%>
         response.sendRedirect("user.jsp");
 
     } else {
-        out.println("登陆失败");
-        response.sendRedirect("login.html");
+        out.println("用户名或密码错误");
+        out.println("<a href='login.html'>重新登入</a>");
     }
 %>
 </body>
