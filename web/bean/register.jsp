@@ -17,7 +17,7 @@
     {
         out.println("用户名存在！！");
         out.println("<a href='register.html'>重新注册</a>");
-    }else if(UserDao.register(name, pass1))
+    }else
     {
         out.println("两次密码相同！！");
         out.println("<a href='register.html'>重新注册</a>");
