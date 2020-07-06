@@ -6,7 +6,7 @@
 <body>
 <%
     session.invalidate();//销毁整个session表
-    response.sendRedirect("user.jsp");
+    response.sendRedirect("logout2.jsp");
 %>
 </body>
 </html>
