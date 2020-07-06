@@ -45,10 +45,11 @@
         <td align="middle" colspan="3"><a href="shopcar.jsp">查看购物车</a></td>
     </tr>
 
-    <tr height="50">
-        <td align="center" colspan="5"><a href="/bean/login.html">注销登陆</a></td>
-    </tr>
-    <tr>当前登录用户<%=session.getAttribute("name")%>;</tr>
+    <%--<tr height="50">--%>
+        <%--<td align="center" colspan="5"><a href="/bean/login.html">注销登陆</a></td>--%>
+    <%--</tr>--%>
+    <tr>当前登录用户<%=session.getAttribute("name")%>; <a href="/bean/login.html">注销登陆</a></tr>
+
 
 
 </table>
