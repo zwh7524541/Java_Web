@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=gb2312" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.shopping.valuebean.GoodsSingle" %>
-<!-- 通过动作标识，获取ShopCar类实例 -->
 <jsp:useBean id="myCar" class="bean.shopping.toolbean.ShopCar" scope="session"/>
 <%
     ArrayList buyList = myCar.getBuys();
@@ -28,7 +27,7 @@
     </tr>
     <% if(buyList == null || buyList.size() == 0){ %>
     <tr height="100">
-        <td colspan="3" align="center">没有商品可以显示！</td>
+        <td colspan="5" align="center">您的购物车为空！</td>
     </tr>
     <%
     }else{
@@ -42,11 +41,11 @@
         <td><%= single.getPrice() %></td>
         <td>
             <a href="docar.jsp?action=reduce_cargoods&id=<%=i%>" >
-                <img src="img/reduce.png" width="19" height="19"/>
+                <img src="img/reduce.png" width="20" height="20"/>
             </a>
             <strong><%=single.getNum()%></strong>
             <a href="docar.jsp?action=add_cargoods&id=<%=i%>">
-                <img src="img/add.png" width="19" height="19"/>
+                <img src="img/add.png" width="20" height="20"/>
             </a>
         </td>
         <td><a href="docar.jsp?action=clear_item&id=<%=i%>">移除</a></td>
@@ -62,9 +61,18 @@
     </tr>
     <tr align="center" height="50">
         <td align="left" colspan="3"><a href="show.jsp">继续购物</td>
+
         <td align="right" colspan="3"><a href="docar.jsp?action=clear">清空购物车</a></td>
     </tr>
-    <tr>当前登录用户<%=session.getAttribute("name")%>;</tr>
+    <tr>当前登录用户<%=session.getAttribute("name")%>;
+        <%
+            if (session.getAttribute("name") != null) {
+                out.println("<a href='/bean/logout.jsp'>注销用户</a>");
+            } else {
+                out.println("<a href='/bean/login.html'>请登录</a>");
+            }
+        %>
+    </tr>
 
 
 

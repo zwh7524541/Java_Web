@@ -24,7 +24,7 @@
     </tr>
     <% if(goodsList == null || goodsList.size() == 0){ %>
     <tr height="100">
-        <td colspan="3" align="center">没有商品可以显示！</td>
+        <td colspan="3" align="center">您还没有登入！</td>
     </tr>
     <%
     }else{
@@ -48,7 +48,15 @@
     <%--<tr height="50">--%>
         <%--<td align="center" colspan="5"><a href="/bean/login.html">注销登陆</a></td>--%>
     <%--</tr>--%>
-    <tr>当前登录用户<%=session.getAttribute("name")%>; <a href="/bean/login.html">注销登陆</a></tr>
+    <tr>当前登录用户<%=session.getAttribute("name")%>;
+        <%
+            if (session.getAttribute("name") != null) {
+                out.println("<a href='/bean/logout.jsp'>注销用户</a>");
+            } else {
+                out.println("<a href='/bean/login.html'>请登录</a>");
+            }
+        %>
+    </tr>
 
 
 
